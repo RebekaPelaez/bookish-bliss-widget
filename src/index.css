@@ -8,6 +8,26 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
+    /* ---- Marea palette (light) ---- */
+    /* core */
+    --marea-deep-tide: 205 44% 19%;     /* #1C3D47 */
+    --marea-whale-blue: 196 39% 49%;    /* #3E7B8C */
+    --marea-seafoam: 180 30% 63%;       /* #6DADA6 */
+    --marea-moss: 105 17% 35%;          /* #4A6741 */
+    --marea-sage: 90 18% 70%;           /* #B8C9A3 */
+    --marea-abyss: 197 56% 12%;         /* #0F2A30 */
+    /* accent */
+    --marea-cosmos: 250 50% 74%;        /* #8A7ED4 */
+    --marea-cosmos-tint: 252 71% 95%;   /* #E8E6FA */
+    --marea-lavender: 285 39% 77%;      /* #C8A8E0 */
+    --marea-coral-dusk: 14 65% 76%;     /* #E8A090 */
+    --marea-terracotta: 350 56% 56%;    /* #D4856A */
+    /* surface */
+    --marea-warm-sand: 38 47% 91%;      /* #F5F1E8 */
+    --marea-linen: 36 38% 86%;          /* #E8E0D0 */
+    --marea-driftwood: 36 30% 70%;      /* #C8B89A */
+    --marea-dark-earth: 47 23% 15%;     /* #2C2820 */
+
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
 
