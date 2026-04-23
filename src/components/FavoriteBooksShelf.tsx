@@ -105,7 +105,7 @@ const BOOKS: Book[] = [
 const spineHeights = ["h-56", "h-60", "h-52", "h-64", "h-58", "h-56", "h-60"];
 const spineWidths = ["w-12", "w-14", "w-12", "w-16", "w-14", "w-12", "w-14"];
 
-export const FavoriteBooks = () => {
+export const FavoriteBooksShelf = () => {
   const [selected, setSelected] = useState<Book | null>(null);
   const [hovered, setHovered] = useState<string | null>(null);
 
@@ -275,4 +275,4 @@ export const FavoriteBooks = () => {
   );
 };
 
-export default FavoriteBooks;
+export default FavoriteBooksShelf;
