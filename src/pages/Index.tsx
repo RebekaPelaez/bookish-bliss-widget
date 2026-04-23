@@ -26,9 +26,11 @@ const Index = () => {
         </header>
 
         {/* Intro */}
-        <section className="mb-16 rounded-2xl p-8 text-[#f5ecd7]" style={{ background: "#4a5a3a" }}>
-          <h2 className="text-2xl font-serif mb-3">I'm Rebeca.</h2>
-          <p className="text-sm leading-relaxed opacity-90 max-w-3xl">
+        <section className="mb-16 rounded-2xl p-8 text-[#f5ecd7] relative overflow-hidden" style={{ background: "hsl(var(--marea-deep-tide))" }}>
+          {/* subtle tide glow */}
+          <div className="absolute -top-24 -right-24 w-72 h-72 rounded-full pointer-events-none opacity-30" style={{ background: "radial-gradient(circle, hsl(var(--marea-seafoam)/0.6), transparent 70%)" }} />
+          <h2 className="text-2xl font-serif mb-3 relative">I'm Rebeca.</h2>
+          <p className="text-sm leading-relaxed opacity-90 max-w-3xl relative">
             I'm a senior product designer based in London. I care about systems that scale
             without losing warmth — design tokens, quiet interactions, and the human on the
             other end of the screen.
