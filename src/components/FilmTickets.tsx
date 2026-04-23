@@ -202,9 +202,9 @@ const Ticket = ({
             exit={{ opacity: 0, y: -4, scale: 0.95 }}
             className="absolute left-1/2 -translate-x-1/2 -bottom-20 w-52 px-3 py-2 rounded-md text-[10.5px] leading-snug text-center z-50"
             style={{
-              background: "#3a2e1a",
+              background: "hsl(var(--marea-deep-tide))",
               color: "#f5ecd7",
-              boxShadow: "0 8px 20px -8px rgba(0,0,0,0.35)",
+              boxShadow: "0 8px 20px -8px rgba(28,61,71,0.45)",
             }}
           >
             <p className="italic">"{film.scene}"</p>
@@ -373,9 +373,9 @@ const TicketFace = ({
           animate={{ opacity: 1, x: 0 }}
           className="absolute right-[-130px] top-1/2 -translate-y-1/2 w-32 px-3 py-2 rounded-md text-[10px] leading-snug font-mono"
           style={{
-            background: "#3a2e1a",
+            background: "hsl(var(--marea-deep-tide))",
             color: "#f5ecd7",
-            boxShadow: "0 8px 20px -8px rgba(0,0,0,0.35)",
+            boxShadow: "0 8px 20px -8px rgba(28,61,71,0.45)",
           }}
         >
           <p className="italic">"{film.scene}"</p>
