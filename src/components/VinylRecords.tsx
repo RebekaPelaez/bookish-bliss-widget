@@ -18,7 +18,7 @@ const RECORDS: Vinyl[] = [
     artist: "My Bloody Valentine",
     year: 1991,
     index: "OP-122",
-    labelColor: "#c44a3a",
+    labelColor: "#1C3D47", // deep-tide
     sleeveImg: "https://picsum.photos/seed/vinyl1/400/400",
   },
   {
@@ -27,7 +27,7 @@ const RECORDS: Vinyl[] = [
     artist: "Joni Mitchell",
     year: 1971,
     index: "OP-123",
-    labelColor: "#3a5a7a",
+    labelColor: "#3E7B8C", // whale-blue
     sleeveImg: "https://picsum.photos/seed/vinyl2/400/400",
   },
   {
@@ -36,7 +36,7 @@ const RECORDS: Vinyl[] = [
     artist: "Tame Impala",
     year: 2012,
     index: "OP-124",
-    labelColor: "#d4a64a",
+    labelColor: "#8A7ED4", // cosmos (kept!)
     sleeveImg: "https://picsum.photos/seed/vinyl3/400/400",
   },
   {
@@ -45,7 +45,7 @@ const RECORDS: Vinyl[] = [
     artist: "Portishead",
     year: 1994,
     index: "OP-125",
-    labelColor: "#4a5a3a",
+    labelColor: "#6DADA6", // seafoam
     sleeveImg: "https://picsum.photos/seed/vinyl4/400/400",
   },
 ];

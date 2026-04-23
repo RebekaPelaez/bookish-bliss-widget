@@ -14,6 +14,23 @@ export default {
     },
     extend: {
       colors: {
+        marea: {
+          "deep-tide": "hsl(var(--marea-deep-tide))",
+          "whale-blue": "hsl(var(--marea-whale-blue))",
+          seafoam: "hsl(var(--marea-seafoam))",
+          moss: "hsl(var(--marea-moss))",
+          sage: "hsl(var(--marea-sage))",
+          abyss: "hsl(var(--marea-abyss))",
+          cosmos: "hsl(var(--marea-cosmos))",
+          "cosmos-tint": "hsl(var(--marea-cosmos-tint))",
+          lavender: "hsl(var(--marea-lavender))",
+          "coral-dusk": "hsl(var(--marea-coral-dusk))",
+          terracotta: "hsl(var(--marea-terracotta))",
+          "warm-sand": "hsl(var(--marea-warm-sand))",
+          linen: "hsl(var(--marea-linen))",
+          driftwood: "hsl(var(--marea-driftwood))",
+          "dark-earth": "hsl(var(--marea-dark-earth))",
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
