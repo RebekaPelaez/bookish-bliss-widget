@@ -230,7 +230,7 @@ const HoloCard = ({ anime }: { anime: Anime }) => {
               Rank {anime.rank}
             </span>
             <span className="font-mono text-[10px] text-white/70">
-              #{ANIME.findIndex((a) => a.id === anime.id) + 1).toString().padStart(3, "0")}
+              #{(ANIME.findIndex((a) => a.id === anime.id) + 1).toString().padStart(3, "0")}
             </span>
           </div>
 
