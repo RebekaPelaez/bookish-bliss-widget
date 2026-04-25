@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 import FavoriteBooksStack from "@/components/FavoriteBooksStack";
 import FilmTickets from "@/components/FilmTickets";
 import NowPlayingChip from "@/components/NowPlayingChip";
@@ -50,9 +52,25 @@ const Index = () => {
         </section>
 
         {/* BOOKS */}
-        <section>
+        <section className="mb-16">
           <SectionLabel>currently on my nightstand</SectionLabel>
           <FavoriteBooksStack />
+        </section>
+
+        {/* Inline link to Nerdy things */}
+        <section className="border-t border-[#2d2a1f]/10 pt-10 pb-4">
+          <Link
+            to="/nerdy-things"
+            className="group inline-flex items-center gap-3 text-sm font-mono text-[#2d2a1f]/60 hover:text-[#2d2a1f] transition-colors"
+          >
+            <span className="uppercase tracking-[0.25em] text-[11px]">
+              more nerdy things
+            </span>
+            <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+          </Link>
+          <p className="mt-2 text-xs text-[#2d2a1f]/50 italic">
+            anime, deeper cuts, holographic things
+          </p>
         </section>
       </div>
     </main>
