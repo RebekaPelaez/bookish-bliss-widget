@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import FavoriteBooksStack from "@/components/FavoriteBooksStack";
+import FavoriteBooksFolio from "@/components/FavoriteBooksFolio";
 import FilmTickets from "@/components/FilmTickets";
 import NowPlayingChip from "@/components/NowPlayingChip";
 import VinylRecords from "@/components/VinylRecords";
@@ -54,7 +54,7 @@ const Index = () => {
         {/* BOOKS */}
         <section className="mb-16">
           <SectionLabel>currently on my nightstand</SectionLabel>
-          <FavoriteBooksStack />
+          <FavoriteBooksFolio />
         </section>
 
         {/* Inline link to Nerdy things */}
