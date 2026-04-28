@@ -144,66 +144,88 @@ const FavoriteBooksFolio = () => {
         </p>
       </div>
 
-      {/* Grid of covers */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-6 gap-y-12">
-        {BOOKS.map((book, i) => {
-          const isHovered = hovered === book.id;
-          return (
-            <button
-              key={book.id}
-              onMouseEnter={() => setHovered(book.id)}
-              onMouseLeave={() => setHovered(null)}
-              onClick={() => setSelected(book)}
-              className="group text-left focus:outline-none"
-              aria-label={`${book.title} by ${book.author}`}
-            >
-              <div className="relative aspect-[2/3] overflow-hidden">
-                {/* Cover */}
-                <motion.img
-                  src={book.cover}
-                  alt={`Cover of ${book.title}`}
-                  loading="lazy"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.04, duration: 0.5 }}
-                  whileHover={{ y: -6 }}
-                  className="w-full h-full object-cover shadow-[0_8px_20px_-8px_rgba(45,42,31,0.4),inset_2px_0_0_rgba(255,255,255,0.08),inset_-1px_0_0_rgba(0,0,0,0.15)] transition-shadow duration-500 group-hover:shadow-[0_18px_35px_-12px_rgba(45,42,31,0.55)]"
-                  style={{ borderLeft: "3px solid rgba(0,0,0,0.18)" }}
-                />
+      {/* Horizontal scrolling shelf */}
+      <div className="relative -mx-4 sm:-mx-6">
+        {/* Soft fade edges */}
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-8 sm:w-12 z-10 bg-gradient-to-r from-[#faf6ec] to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-8 sm:w-12 z-10 bg-gradient-to-l from-[#faf6ec] to-transparent" />
 
-                {/* Hover note overlay */}
-                <AnimatePresence>
-                  {isHovered && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 8 }}
+        <div
+          className="overflow-x-auto overflow-y-visible pb-6 px-4 sm:px-6 [scrollbar-width:thin] [-webkit-overflow-scrolling:touch]"
+          style={{ scrollbarColor: "#2d2a1f33 transparent" }}
+        >
+          <div className="flex items-end gap-8 sm:gap-10 pt-8 pb-2 min-w-max">
+            {BOOKS.map((book, i) => {
+              const isHovered = hovered === book.id;
+              return (
+                <button
+                  key={book.id}
+                  onMouseEnter={() => setHovered(book.id)}
+                  onMouseLeave={() => setHovered(null)}
+                  onClick={() => setSelected(book)}
+                  className="group text-left focus:outline-none shrink-0 w-[120px] sm:w-[130px]"
+                  aria-label={`${book.title} by ${book.author}`}
+                >
+                  <div className="relative aspect-[2/3] overflow-visible">
+                    <motion.img
+                      src={book.cover}
+                      alt={`Cover of ${book.title}`}
+                      loading="lazy"
+                      initial={{ opacity: 0, y: 16 }}
                       animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 8 }}
-                      transition={{ duration: 0.25 }}
-                      className="absolute inset-x-2 bottom-2 px-3 py-2 bg-[#faf6ec]/95 backdrop-blur-sm border border-[#2d2a1f]/15 shadow-md pointer-events-none"
-                    >
-                      <p className="text-[11px] font-serif italic text-[#2d2a1f] leading-snug">
-                        “{book.hoverNote}”
-                      </p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
+                      transition={{ delay: i * 0.05, duration: 0.5 }}
+                      whileHover={{ y: -8 }}
+                      className="w-full h-full object-cover shadow-[0_8px_18px_-8px_rgba(45,42,31,0.4),inset_2px_0_0_rgba(255,255,255,0.08),inset_-1px_0_0_rgba(0,0,0,0.15)] transition-shadow duration-500 group-hover:shadow-[0_18px_30px_-10px_rgba(45,42,31,0.5)]"
+                      style={{ borderLeft: "3px solid rgba(0,0,0,0.18)" }}
+                    />
 
-              {/* Caption */}
-              <div className="mt-3 px-0.5">
-                <p className="text-[9px] font-mono uppercase tracking-[0.2em] text-[#2d2a1f]/45">
-                  No. {String(i + 1).padStart(2, "0")} · {book.tag}
-                </p>
-                <p className="mt-1 text-sm font-serif text-[#2d2a1f] leading-tight line-clamp-2">
-                  {book.title}
-                </p>
-                <p className="text-[11px] text-[#2d2a1f]/55 italic mt-0.5">
-                  {book.author}
+                    {/* Hover note */}
+                    <AnimatePresence>
+                      {isHovered && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 6 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 6 }}
+                          transition={{ duration: 0.2 }}
+                          className="absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap px-2.5 py-1 bg-[#2d2a1f] text-[#faf6ec] text-[10px] font-serif italic shadow-md pointer-events-none"
+                        >
+                          “{book.hoverNote}”
+                          <div className="absolute left-1/2 -bottom-1 -translate-x-1/2 w-2 h-2 bg-[#2d2a1f] rotate-45" />
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+
+                  {/* Caption */}
+                  <div className="mt-3">
+                    <p className="text-[9px] font-mono uppercase tracking-[0.2em] text-[#2d2a1f]/45">
+                      {String(i + 1).padStart(2, "0")} · {book.tag}
+                    </p>
+                    <p className="mt-1 text-[12px] font-serif text-[#2d2a1f] leading-tight line-clamp-2">
+                      {book.title}
+                    </p>
+                    <p className="text-[10px] text-[#2d2a1f]/55 italic mt-0.5 line-clamp-1">
+                      {book.author}
+                    </p>
+                  </div>
+                </button>
+              );
+            })}
+
+            {/* End marker */}
+            <div className="shrink-0 self-stretch flex items-center pl-2 pr-4">
+              <div className="flex flex-col items-center gap-2 text-[#2d2a1f]/30">
+                <div className="w-px h-16 bg-current" />
+                <p className="text-[9px] font-mono uppercase tracking-[0.3em] rotate-90 origin-center whitespace-nowrap mt-4">
+                  end of shelf
                 </p>
               </div>
-            </button>
-          );
-        })}
+            </div>
+          </div>
+        </div>
+
+        {/* Wooden shelf line */}
+        <div className="mx-4 sm:mx-6 h-[3px] bg-gradient-to-b from-[#2d2a1f]/25 to-transparent" />
       </div>
 
       {/* Detail modal */}
