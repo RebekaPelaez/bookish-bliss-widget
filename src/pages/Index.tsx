@@ -13,63 +13,100 @@ const SectionLabel = ({ children }: { children: React.ReactNode }) => (
 
 const Index = () => {
   return (
-    <main className="min-h-screen bg-[#faf6ec] py-16 px-4">
+    <main className="min-h-screen bg-[#faf6ec] py-12 px-4">
       {/* Persistent now-playing chip */}
       <div className="fixed top-5 right-5 z-50">
         <NowPlayingChip />
       </div>
 
-      <div className="max-w-5xl mx-auto">
-        {/* Header */}
-        <header className="mb-12">
-          <h1 className="text-5xl md:text-6xl font-serif tracking-tight text-[#2d2a1f]">
-            About me
-          </h1>
+      <div className="max-w-6xl mx-auto">
+        {/* ============ HERO ============ */}
+        <header className="mb-14 grid grid-cols-1 md:grid-cols-12 gap-8 items-end border-b border-[#2d2a1f]/15 pb-10">
+          <div className="md:col-span-8">
+            <p className="text-[10px] tracking-[0.35em] font-mono uppercase text-[#2d2a1f]/50 mb-4">
+              Vol. 01 · A personal index
+            </p>
+            <h1 className="text-5xl md:text-7xl font-serif tracking-tight text-[#2d2a1f] leading-[0.95]">
+              About me.
+            </h1>
+            <p className="mt-6 text-base md:text-lg leading-relaxed text-[#2d2a1f]/75 max-w-xl">
+              I'm <span className="font-serif italic">Rebeca</span> — a senior product
+              designer in London. I care about systems that scale without losing warmth:
+              design tokens, quiet interactions, and the human on the other end of the
+              screen.
+            </p>
+          </div>
+
+          {/* Meta column — like a colophon */}
+          <aside className="md:col-span-4 md:pl-6 md:border-l border-[#2d2a1f]/15 space-y-3 text-[11px] font-mono uppercase tracking-[0.18em] text-[#2d2a1f]/65">
+            <div>
+              <span className="text-[#2d2a1f]/40">Based</span>
+              <span className="block mt-0.5 text-[#2d2a1f] normal-case tracking-normal font-serif text-sm">
+                London, UK
+              </span>
+            </div>
+            <div>
+              <span className="text-[#2d2a1f]/40">Currently</span>
+              <span className="block mt-0.5 text-[#2d2a1f] normal-case tracking-normal font-serif text-sm">
+                Senior Product Designer at EY
+              </span>
+            </div>
+            <div>
+              <span className="text-[#2d2a1f]/40">Speaks</span>
+              <span className="block mt-0.5 text-[#2d2a1f] normal-case tracking-normal font-serif text-sm">
+                ES (native) · EN · DE (B2)
+              </span>
+            </div>
+          </aside>
         </header>
 
-        {/* Intro */}
-        <section className="mb-16 rounded-2xl p-8 text-[#f5ecd7] relative overflow-hidden" style={{ background: "hsl(var(--marea-deep-tide))" }}>
-          {/* subtle tide glow */}
-          <div className="absolute -top-24 -right-24 w-72 h-72 rounded-full pointer-events-none opacity-30" style={{ background: "radial-gradient(circle, hsl(var(--marea-seafoam)/0.6), transparent 70%)" }} />
-          <h2 className="text-2xl font-serif mb-3 relative">I'm Rebeca.</h2>
-          <p className="text-sm leading-relaxed opacity-90 max-w-3xl relative">
-            I'm a senior product designer based in London. I care about systems that scale
-            without losing warmth — design tokens, quiet interactions, and the human on the
-            other end of the screen.
-          </p>
+        {/* ============ CABINET OF CURIOSITIES ============ */}
+        <section className="mb-10">
+          <div className="flex items-baseline justify-between mb-8">
+            <p className="text-[11px] uppercase tracking-[0.3em] text-[#2d2a1f]/55 font-mono">
+              A cabinet of curiosities
+            </p>
+            <p className="text-[10px] uppercase tracking-[0.25em] text-[#2d2a1f]/35 font-mono italic">
+              hover · click · open
+            </p>
+          </div>
+
+          {/* BOOKS — full width, the centerpiece */}
+          <div className="mb-20">
+            <FavoriteBooksFolio />
+          </div>
+
+          {/* FILMS + VINYL — side by side on desktop, stacked on mobile */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-start">
+            <div className="lg:col-span-7">
+              <SectionLabel>films I rewatch</SectionLabel>
+              <FilmTickets interaction="tear" />
+            </div>
+            <div className="lg:col-span-5">
+              <SectionLabel>on heavy rotation</SectionLabel>
+              <VinylRecords />
+            </div>
+          </div>
         </section>
 
-        {/* FILMS */}
-        <section className="mb-20">
-          <SectionLabel>films i rewatch</SectionLabel>
-          <FilmTickets interaction="tear" />
-        </section>
-
-        {/* MUSIC — vinyls */}
-        <section className="mb-20">
-          <SectionLabel>on heavy rotation</SectionLabel>
-          <VinylRecords />
-        </section>
-
-        {/* BOOKS */}
-        <section className="mb-16">
-          <SectionLabel>currently on my nightstand</SectionLabel>
-          <FavoriteBooksFolio />
-        </section>
-
-        {/* Inline link to Nerdy things */}
-        <section className="border-t border-[#2d2a1f]/10 pt-10 pb-4">
-          <Link
-            to="/nerdy-things"
-            className="group inline-flex items-center gap-3 text-sm font-mono text-[#2d2a1f]/60 hover:text-[#2d2a1f] transition-colors"
-          >
-            <span className="uppercase tracking-[0.25em] text-[11px]">
-              more nerdy things
-            </span>
-            <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
-          </Link>
-          <p className="mt-2 text-xs text-[#2d2a1f]/50 italic">
-            anime, deeper cuts, holographic things
+        {/* ============ FOOTER LINK TO NERDY THINGS ============ */}
+        <section className="border-t border-[#2d2a1f]/15 mt-16 pt-8 pb-4 flex items-end justify-between gap-6">
+          <div>
+            <Link
+              to="/nerdy-things"
+              className="group inline-flex items-center gap-3 text-[#2d2a1f] hover:text-[#2d2a1f]/70 transition-colors"
+            >
+              <span className="font-serif text-2xl md:text-3xl tracking-tight">
+                More nerdy things
+              </span>
+              <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1.5" />
+            </Link>
+            <p className="mt-1 text-xs text-[#2d2a1f]/50 italic font-serif">
+              anime, deeper cuts, holographic things
+            </p>
+          </div>
+          <p className="hidden sm:block text-[10px] uppercase tracking-[0.3em] font-mono text-[#2d2a1f]/35">
+            Vol. 02 →
           </p>
         </section>
       </div>
