@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Camera, Star } from "lucide-react";
+import { Film as FilmIcon, Star } from "lucide-react";
 
 export type TicketInteraction = "tear" | "lift" | "shuffle" | "flip";
 
@@ -273,7 +273,7 @@ const TicketFace = ({
 
         {side === "front" ? (
           <div className="relative text-[#3a2e1a] text-center font-mono">
-            <Camera className="w-4 h-4 mx-auto mb-1 opacity-80" />
+            <FilmIcon className="w-4 h-4 mx-auto mb-1 opacity-80" />
             <p className="text-[9px] uppercase tracking-[0.3em] opacity-70 mb-3">
               Cinema
             </p>
