@@ -1,6 +1,33 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Film as FilmIcon, Star } from "lucide-react";
+import { Star } from "lucide-react";
+
+const VintageFilmCamera = ({ className }: { className?: string }) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={1.5}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+    aria-hidden="true"
+  >
+    {/* two film reels on top */}
+    <circle cx="7.5" cy="5" r="2.25" />
+    <circle cx="14" cy="5" r="2.25" />
+    <circle cx="7.5" cy="5" r="0.6" fill="currentColor" />
+    <circle cx="14" cy="5" r="0.6" fill="currentColor" />
+    {/* camera body */}
+    <rect x="3" y="9" width="13" height="9" rx="1" />
+    {/* lens barrel sticking out the right */}
+    <path d="M16 11.5h3l2 -1.2v7.4l-2 -1.2h-3z" />
+    {/* viewfinder on top */}
+    <rect x="9" y="7.5" width="2.5" height="1.5" rx="0.3" />
+    {/* crank handle */}
+    <path d="M3 19.5l1.5 1.5M4.5 21h1.5" />
+  </svg>
+);
 
 export type TicketInteraction = "tear" | "lift" | "shuffle" | "flip";
 
@@ -273,7 +300,7 @@ const TicketFace = ({
 
         {side === "front" ? (
           <div className="relative text-[#3a2e1a] text-center font-mono">
-            <FilmIcon className="w-4 h-4 mx-auto mb-1 opacity-80" />
+            <VintageFilmCamera className="w-5 h-5 mx-auto mb-1 opacity-80" />
             <p className="text-[9px] uppercase tracking-[0.3em] opacity-70 mb-3">
               Cinema
             </p>
