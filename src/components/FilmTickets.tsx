@@ -159,16 +159,6 @@ const Ticket = ({
         perspective: 1200,
       }}
     >
-      {/* Washi tape strip top-left */}
-      <div
-        className="absolute -top-2 -left-3 w-14 h-5 rotate-[-18deg] z-20 pointer-events-none"
-        style={{
-          background:
-            "repeating-linear-gradient(45deg, rgba(180,170,140,0.55) 0 4px, rgba(200,190,160,0.45) 4px 8px)",
-          boxShadow: "0 1px 2px rgba(0,0,0,0.1)",
-        }}
-      />
-
       {/* FRONT */}
       <div
         className="relative"
