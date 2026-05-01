@@ -6,7 +6,7 @@ type Anime = {
   title: string;
   subtitle: string;
   rank: string;
-  status: "Watching" | "Completed" | "On hold";
+  status: "Watching" | "Finished";
   episodes: string;
   note: string;
   // Two-tone gradient that becomes the "art" behind the holo
@@ -21,7 +21,7 @@ const ANIME: Anime[] = [
     title: "Demon Slayer",
     subtitle: "Kimetsu no Yaiba",
     rank: "S",
-    status: "Watching",
+    status: "Finished",
     episodes: "Ep 55 / 63",
     note: "Ufotable's water-breathing sequences ruined other action anime for me.",
     artFrom: "#1a1330",
@@ -33,7 +33,7 @@ const ANIME: Anime[] = [
     title: "Apothecary's Diaries",
     subtitle: "Kusuriya no Hitorigoto",
     rank: "A",
-    status: "Watching",
+    status: "Finished",
     episodes: "S2 ongoing",
     note: "Maomao's clinical detachment is the protagonist energy I needed.",
     artFrom: "#1d3a2e",
@@ -45,7 +45,7 @@ const ANIME: Anime[] = [
     title: "My Hero Academia",
     subtitle: "Boku no Hero",
     rank: "B+",
-    status: "Watching",
+    status: "Finished",
     episodes: "Ep 138",
     note: "Stayed for the Todoroki family arc. Plus Ultra forever.",
     artFrom: "#0a2540",
@@ -57,19 +57,19 @@ const ANIME: Anime[] = [
     title: "Witch Hat Atelier",
     subtitle: "Tongari Bōshi no Atelier",
     rank: "S",
-    status: "On hold",
+    status: "Watching",
     episodes: "Vol 12 (manga)",
     note: "Magic system based on drawing — meta-commentary on the art of manga itself.",
     artFrom: "#2d1b4e",
     artTo: "#c084fc",
-    emoji: "🎩",
+    emoji: "🧙‍♀️",
   },
   {
     id: "spy-family",
     title: "Spy x Family",
     subtitle: "Supai Famirī",
     rank: "A",
-    status: "Watching",
+    status: "Finished",
     episodes: "S2 ongoing",
     note: "Anya's facial expressions carry the entire genre of comedy on her tiny shoulders.",
     artFrom: "#3a1a2e",
@@ -81,7 +81,7 @@ const ANIME: Anime[] = [
     title: "7th Time Loop",
     subtitle: "Loop 7-kaime no Akujo",
     rank: "A",
-    status: "Completed",
+    status: "Finished",
     episodes: "12 eps",
     note: "Rishe speedrunning life skills across timelines is my self-improvement fantasy.",
     artFrom: "#2a1f4e",
@@ -93,7 +93,7 @@ const ANIME: Anime[] = [
     title: "Frieren",
     subtitle: "Beyond Journey's End",
     rank: "SSS",
-    status: "Completed",
+    status: "Finished",
     episodes: "28 eps",
     note: "A melancholic masterpiece about the weight of quiet moments. Perfect.",
     artFrom: "#1e3a5f",
@@ -103,11 +103,7 @@ const ANIME: Anime[] = [
 ];
 
 const statusColor = (s: Anime["status"]) =>
-  s === "Watching"
-    ? "text-cyan-300"
-    : s === "Completed"
-    ? "text-emerald-300"
-    : "text-amber-300";
+  s === "Watching" ? "text-cyan-300" : "text-emerald-300";
 
 const HoloCard = ({ anime }: { anime: Anime }) => {
   const ref = useRef<HTMLDivElement>(null);
