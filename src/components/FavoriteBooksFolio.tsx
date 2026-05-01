@@ -17,6 +17,7 @@ import alchemised from "@/assets/books/alchemised.jpg";
 import oneGoldenSummer from "@/assets/books/one-golden-summer.jpg";
 import slaughterhouseFive from "@/assets/books/slaughterhouse-five.jpg";
 import islaMujeresDelMar from "@/assets/books/isla-mujeres-del-mar.jpg";
+import maybeYouShouldTalk from "@/assets/books/maybe-you-should-talk-to-someone.jpg";
 
 type Book = {
   id: string;
@@ -215,6 +216,18 @@ const BOOKS: Book[] = [
     quote: "El mar es nuestra madre, nuestro padre, nuestro campo y nuestra tumba.",
     rating: 5,
     tag: "Histórica",
+  },
+  {
+    id: "maybe-you-should-talk-to-someone",
+    title: "Maybe You Should Talk to Someone",
+    author: "Lori Gottlieb",
+    cover: maybeYouShouldTalk,
+    hoverNote: "the therapist goes to therapy",
+    blurb:
+      "A therapist unravels in her own life and ends up on the other side of the couch. Tender, funny, and full of small revelations about how we change — or refuse to.",
+    quote: "The nature of life is change, but the nature of human beings is to resist change.",
+    rating: 5,
+    tag: "Memoir",
   },
 ];
 
