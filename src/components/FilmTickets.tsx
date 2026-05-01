@@ -186,7 +186,7 @@ const Ticket = ({
       initial={{ opacity: 0, y: 20, rotateZ: film.rotate }}
       animate={{ opacity: 1, ...animate }}
       transition={{ type: "spring", stiffness: 200, damping: 22 }}
-      className="relative cursor-pointer select-none"
+      className="group relative cursor-pointer select-none"
       style={{
         width: 200,
         zIndex: isOpen ? 50 : zBoost,
