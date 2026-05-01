@@ -10,6 +10,12 @@ import bodyKeepsScore from "@/assets/books/body-keeps-the-score.jpg";
 import nameOfTheWind from "@/assets/books/name-of-the-wind.jpg";
 import duelo from "@/assets/books/pequeno-libro-del-duelo.jpg";
 import acotar from "@/assets/books/acotar.jpg";
+import manWhoMistook from "@/assets/books/man-who-mistook.jpg";
+import mythOfNormal from "@/assets/books/myth-of-normal.jpg";
+import myFriends from "@/assets/books/my-friends.jpg";
+import alchemised from "@/assets/books/alchemised.jpg";
+import oneGoldenSummer from "@/assets/books/one-golden-summer.jpg";
+import slaughterhouseFive from "@/assets/books/slaughterhouse-five.jpg";
 
 type Book = {
   id: string;
@@ -122,6 +128,80 @@ const BOOKS: Book[] = [
     quote: "El duelo no se cierra: se aprende a llevar.",
     rating: 5,
     tag: "Ensayo",
+  },
+  {
+    id: "man-who-mistook",
+    title: "The Man Who Mistook His Wife for a Hat",
+    author: "Oliver Sacks",
+    cover: manWhoMistook,
+    series: "And Other Clinical Tales",
+    hoverNote: "the brain is stranger than fiction",
+    blurb:
+      "Sacks writes about his patients with the tenderness of a novelist and the precision of a clinician. Each case study is a small, humane mystery about what it means to have a self.",
+    quote: "We have, each of us, a life-story, an inner narrative — whose continuity, whose sense, is our lives.",
+    rating: 5,
+    tag: "Neuroscience",
+  },
+  {
+    id: "myth-of-normal",
+    title: "The Myth of Normal",
+    author: "Gabor Maté",
+    cover: mythOfNormal,
+    series: "Trauma, Illness & Healing in a Toxic Culture",
+    hoverNote: "made me reconsider 'fine'",
+    blurb:
+      "Maté argues that what we call normal is often quietly making us sick. A sweeping, compassionate look at how culture shapes the body — and what it would take to heal.",
+    quote: "Safety is not the absence of threat, it is the presence of connection.",
+    rating: 5,
+    tag: "Psychology",
+  },
+  {
+    id: "my-friends",
+    title: "My Friends",
+    author: "Hisham Matar",
+    cover: myFriends,
+    hoverNote: "a quiet ache I'm still carrying",
+    blurb:
+      "Friendship, exile, and the long shadow of a single afternoon in London. Matar writes with such restraint that the grief sneaks up on you sideways.",
+    quote: "We are, all of us, walking around with our private histories pressed against our ribs.",
+    rating: 5,
+    tag: "Literary",
+  },
+  {
+    id: "alchemised",
+    title: "Alchemised",
+    author: "SenLinYu",
+    cover: alchemised,
+    hoverNote: "dark, slow, devastating",
+    blurb:
+      "A war is over and the survivors are the ones still being undone by it. Gothic, morally bruised, and impossible to put down once it has its teeth in you.",
+    quote: "Some things you don't survive — you just keep living after them.",
+    rating: 4,
+    tag: "Romantasy",
+  },
+  {
+    id: "one-golden-summer",
+    title: "One Golden Summer",
+    author: "Carley Fortune",
+    cover: oneGoldenSummer,
+    hoverNote: "read it on a train, smiling",
+    blurb:
+      "Lake light, second chances, and the particular ache of a summer that mattered more than you let on. Cosy without being saccharine.",
+    quote: "Some summers don't end, they just change shape.",
+    rating: 4,
+    tag: "Romance",
+  },
+  {
+    id: "slaughterhouse-five",
+    title: "Slaughterhouse-Five",
+    author: "Kurt Vonnegut",
+    cover: slaughterhouseFive,
+    hoverNote: "so it goes.",
+    blurb:
+      "Time-travel, war, and a man unstuck from his own life. Vonnegut turns horror into something almost gentle — a shrug at the edge of the abyss.",
+    quote: "Everything was beautiful and nothing hurt.",
+    rating: 5,
+    tag: "Classic",
   },
 ];
 
