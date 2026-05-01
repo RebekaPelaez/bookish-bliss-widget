@@ -100,6 +100,18 @@ const ANIME: Anime[] = [
     artTo: "#a7c7e7",
     emoji: "✨",
   },
+  {
+    id: "sakura-card-captor",
+    title: "Cardcaptor Sakura",
+    subtitle: "Kādokyaputā Sakura",
+    rank: "S",
+    status: "Finished",
+    episodes: "70 eps",
+    note: "The original magical girl blueprint — pure nostalgia in pastel pink.",
+    artFrom: "#3a1a4e",
+    artTo: "#f9a8d4",
+    emoji: "🌸",
+  },
 ];
 
 const statusColor = (s: Anime["status"]) =>
