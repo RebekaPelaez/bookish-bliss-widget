@@ -13,6 +13,7 @@ type Anime = {
   artFrom: string;
   artTo: string;
   emoji: string;
+  aside?: string;
 };
 
 const ANIME: Anime[] = [
@@ -111,6 +112,19 @@ const ANIME: Anime[] = [
     artFrom: "#3a1a4e",
     artTo: "#f9a8d4",
     emoji: "🌸",
+  },
+  {
+    id: "avatar-tla",
+    title: "Avatar: The Last Airbender",
+    subtitle: "Book 1–3",
+    rank: "SSS",
+    status: "Finished",
+    episodes: "61 eps",
+    note: "Yes, technically not anime — but the world-building, the arcs, the Zuko redemption. Untouchable.",
+    artFrom: "#1a3a4e",
+    artTo: "#e8b76b",
+    emoji: "🌬️",
+    aside: "not anime, but…",
   },
 ];
 
@@ -277,6 +291,9 @@ const HoloCard = ({ anime }: { anime: Anime }) => {
           <div>
             <p className="text-[9px] uppercase tracking-[0.2em] text-white/60 mb-0.5 font-mono">
               {anime.subtitle}
+              {anime.aside && (
+                <span className="ml-1 normal-case tracking-normal italic text-white/45">· {anime.aside}</span>
+              )}
             </p>
             <h3 className="text-base font-bold leading-tight mb-2 drop-shadow">
               {anime.title}
