@@ -123,7 +123,7 @@ const ANIME: Anime[] = [
     note: "Yes, technically not anime — but the world-building, the arcs, the Zuko redemption. Untouchable.",
     artFrom: "#1a3a4e",
     artTo: "#e8b76b",
-    emoji: "🌬️",
+    emoji: "🔥💧\n🌿🌬️",
     aside: "not anime, but…",
   },
 ];
