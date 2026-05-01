@@ -62,7 +62,7 @@ const ANIME: Anime[] = [
     note: "Magic system based on drawing — meta-commentary on the art of manga itself.",
     artFrom: "#2d1b4e",
     artTo: "#c084fc",
-    emoji: "🧙‍♀️",
+    emoji: "🧙‍♂️",
   },
   {
     id: "spy-family",
