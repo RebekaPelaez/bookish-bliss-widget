@@ -291,6 +291,9 @@ const HoloCard = ({ anime }: { anime: Anime }) => {
           <div>
             <p className="text-[9px] uppercase tracking-[0.2em] text-white/60 mb-0.5 font-mono">
               {anime.subtitle}
+              {anime.aside && (
+                <span className="ml-1 normal-case tracking-normal italic text-white/45">· {anime.aside}</span>
+              )}
             </p>
             <h3 className="text-base font-bold leading-tight mb-2 drop-shadow">
               {anime.title}
