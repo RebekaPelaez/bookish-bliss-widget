@@ -149,6 +149,12 @@ const Ticket = ({
       ? { y: -10, rotateZ: film.rotate * 0.3, scale: 1.03 }
       : { y: 0, rotateZ: film.rotate, scale: 1 };
 
+  // ---- TEAR mode: subtle hover lift to signal interactivity
+  const tearHoverAnim =
+    mode === "tear" && hovered && !isOpen
+      ? { y: -6, rotateZ: film.rotate * 0.6, scale: 1.02 }
+      : { y: 0, rotateZ: film.rotate, scale: 1 };
+
   // ---- SHUFFLE: clicked one comes to top with a little hop
   const shuffleAnim =
     mode === "shuffle" && isOpen
