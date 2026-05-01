@@ -57,34 +57,70 @@ export const NowPlayingChip = ({
         boxShadow: `0 4px 14px ${withAlpha(accent, 0.18)}`,
       }}
     >
-      {/* Spinning disc — solid track color with soft sheen */}
+      {/* Spinning vinyl — black disc, grooves, glossy sheen sweep, colored center label */}
       <div
-        className="relative size-9 rounded-full overflow-hidden shrink-0"
+        className="relative size-9 rounded-full overflow-hidden shrink-0 shadow-[inset_0_0_4px_rgba(0,0,0,0.5)]"
         style={{
-          background: disc,
           border: `1px solid ${withAlpha(accent, 0.35)}`,
         }}
       >
+        {/* Rotating layer: base black + radial groove rings + conic gloss sweep + center label */}
         <motion.div
-          className="size-full"
+          className="absolute inset-0"
           style={{
-            background: `radial-gradient(circle at 35% 30%, ${withAlpha(
-              "#ffffff",
-              0.55
-            )} 0%, transparent 38%), radial-gradient(circle at 65% 70%, ${withAlpha(
-              discTint,
-              0.5
-            )} 0%, transparent 50%), ${disc}`,
+            background: `
+              /* glossy highlight sweep */
+              conic-gradient(from 0deg,
+                rgba(255,255,255,0) 0deg,
+                rgba(255,255,255,0.18) 30deg,
+                rgba(255,255,255,0) 70deg,
+                rgba(255,255,255,0) 180deg,
+                rgba(255,255,255,0.10) 210deg,
+                rgba(255,255,255,0) 250deg,
+                rgba(255,255,255,0) 360deg),
+              /* fine grooves */
+              repeating-radial-gradient(circle at center,
+                #1a1a1a 0px,
+                #1a1a1a 1px,
+                #050505 1.5px,
+                #1a1a1a 2px),
+              ${disc}
+            `,
           }}
           animate={{ rotate: 360 }}
-          transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-        />
-        {/* center hole */}
+          transition={{ duration: 2.6, repeat: Infinity, ease: "linear" }}
+        >
+          {/* Center label sticker (rotates with the disc) */}
+          <div
+            className="absolute inset-0 m-auto size-3.5 rounded-full flex items-center justify-center"
+            style={{
+              background: `radial-gradient(circle at 35% 30%, ${withAlpha(
+                "#ffffff",
+                0.35
+              )} 0%, transparent 60%), ${accent}`,
+              boxShadow: `inset 0 0 0 0.5px ${withAlpha("#000000", 0.3)}`,
+            }}
+          >
+            {/* tiny radial tick to sell the spin */}
+            <div
+              className="absolute top-0.5 left-1/2 -translate-x-1/2 w-px h-1 rounded-full"
+              style={{ background: withAlpha("#ffffff", 0.5) }}
+            />
+            {/* spindle hole */}
+            <div className="size-1 rounded-full bg-[#faf6ec] shadow-[inset_0_0_1px_rgba(0,0,0,0.4)]" />
+          </div>
+        </motion.div>
+
+        {/* Static top-light highlight (doesn't rotate — keeps the "glossy plastic" feel) */}
         <div
-          className="absolute inset-0 m-auto size-1.5 rounded-full bg-[#faf6ec]"
-          style={{ border: `1px solid ${withAlpha(accent, 0.4)}` }}
+          className="absolute inset-0 pointer-events-none rounded-full"
+          style={{
+            background:
+              "radial-gradient(ellipse 60% 30% at 50% 15%, rgba(255,255,255,0.2) 0%, transparent 70%)",
+          }}
         />
       </div>
+
 
       <div className="flex flex-col leading-none">
         <span
