@@ -16,6 +16,7 @@ import myFriends from "@/assets/books/my-friends.jpg";
 import alchemised from "@/assets/books/alchemised.jpg";
 import oneGoldenSummer from "@/assets/books/one-golden-summer.jpg";
 import slaughterhouseFive from "@/assets/books/slaughterhouse-five.jpg";
+import islaMujeresDelMar from "@/assets/books/isla-mujeres-del-mar.jpg";
 
 type Book = {
   id: string;
@@ -202,6 +203,18 @@ const BOOKS: Book[] = [
     quote: "Everything was beautiful and nothing hurt.",
     rating: 5,
     tag: "Classic",
+  },
+  {
+    id: "isla-mujeres-del-mar",
+    title: "La isla de las mujeres del mar",
+    author: "Lisa See",
+    cover: islaMujeresDelMar,
+    hoverNote: "amistad, mar y memoria",
+    blurb:
+      "En la isla coreana de Jeju, las haenyeo bucean sin oxígeno y sostienen a sus familias. Una amistad de toda la vida atravesada por la guerra, el secreto y el perdón que tarda décadas en llegar.",
+    quote: "El mar es nuestra madre, nuestro padre, nuestro campo y nuestra tumba.",
+    rating: 5,
+    tag: "Histórica",
   },
 ];
 
