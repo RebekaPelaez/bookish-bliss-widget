@@ -6,7 +6,7 @@ type Anime = {
   title: string;
   subtitle: string;
   rank: string;
-  status: "Watching" | "Completed" | "On hold";
+  status: "Watching" | "Finished";
   episodes: string;
   note: string;
   // Two-tone gradient that becomes the "art" behind the holo
@@ -21,7 +21,7 @@ const ANIME: Anime[] = [
     title: "Demon Slayer",
     subtitle: "Kimetsu no Yaiba",
     rank: "S",
-    status: "Watching",
+    status: "Finished",
     episodes: "Ep 55 / 63",
     note: "Ufotable's water-breathing sequences ruined other action anime for me.",
     artFrom: "#1a1330",
@@ -45,7 +45,7 @@ const ANIME: Anime[] = [
     title: "My Hero Academia",
     subtitle: "Boku no Hero",
     rank: "B+",
-    status: "Watching",
+    status: "Finished",
     episodes: "Ep 138",
     note: "Stayed for the Todoroki family arc. Plus Ultra forever.",
     artFrom: "#0a2540",
@@ -57,12 +57,12 @@ const ANIME: Anime[] = [
     title: "Witch Hat Atelier",
     subtitle: "Tongari Bōshi no Atelier",
     rank: "S",
-    status: "On hold",
+    status: "Watching",
     episodes: "Vol 12 (manga)",
     note: "Magic system based on drawing — meta-commentary on the art of manga itself.",
     artFrom: "#2d1b4e",
     artTo: "#c084fc",
-    emoji: "🎩",
+    emoji: "🧙‍♀️",
   },
   {
     id: "spy-family",
@@ -103,11 +103,7 @@ const ANIME: Anime[] = [
 ];
 
 const statusColor = (s: Anime["status"]) =>
-  s === "Watching"
-    ? "text-cyan-300"
-    : s === "Completed"
-    ? "text-emerald-300"
-    : "text-amber-300";
+  s === "Watching" ? "text-cyan-300" : "text-emerald-300";
 
 const HoloCard = ({ anime }: { anime: Anime }) => {
   const ref = useRef<HTMLDivElement>(null);
