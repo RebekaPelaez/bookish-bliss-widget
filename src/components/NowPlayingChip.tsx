@@ -20,13 +20,13 @@ type Props = {
 };
 
 // Per-track palette. To add a new song, drop it in here — chip retints automatically.
-// (Kept here so the chip stays self-contained; lift to a prop/context later if needed.)
+// `accent` tints the label, dot, equalizer, glow AND the vinyl's center label sticker.
 const CURRENT: Track = {
   track: "Slow Burn",
   artist: "Kacey Musgraves",
-  accent: "#4A6741",      // moss
-  disc: "#B8C9A3",        // sage
-  discTint: "#E8E0D0",    // linen highlight
+  accent: "#4A6741",      // moss — center label color
+  disc: "#0a0a0a",        // black vinyl (kept as a prop for future themes)
+  discTint: "#E8E0D0",
 };
 
 export const NowPlayingChip = ({
