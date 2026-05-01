@@ -281,10 +281,18 @@ const HoloCard = ({ anime }: { anime: Anime }) => {
           </div>
 
           {/* Middle: emoji art */}
-          <div className="flex-1 flex items-center justify-center text-6xl drop-shadow-2xl"
+          <div className="flex-1 flex items-center justify-center drop-shadow-2xl"
             style={{ filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.6))" }}
           >
-            {anime.emoji}
+            {anime.emoji.includes("\n") ? (
+              <div className="grid grid-cols-2 gap-2 text-4xl">
+                {anime.emoji.split(/\n|/u).filter((c) => c.trim()).map((c, i) => (
+                  <span key={i} className="leading-none">{c}</span>
+                ))}
+              </div>
+            ) : (
+              <span className="text-6xl">{anime.emoji}</span>
+            )}
           </div>
 
           {/* Bottom: details */}
