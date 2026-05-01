@@ -174,6 +174,8 @@ const Ticket = ({
       ? shuffleAnim
       : mode === "flip"
       ? flipAnim
+      : mode === "tear"
+      ? tearHoverAnim
       : { rotateZ: film.rotate };
 
   return (
