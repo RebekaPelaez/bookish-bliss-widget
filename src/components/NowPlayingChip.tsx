@@ -1,43 +1,107 @@
 import { motion } from "framer-motion";
 
+type Track = {
+  track: string;
+  artist: string;
+  /** core accent (label, dot, equalizer, glow) */
+  accent: string;
+  /** disc base color */
+  disc: string;
+  /** subtle secondary tone for the disc highlight ring */
+  discTint?: string;
+};
+
 type Props = {
   track?: string;
   artist?: string;
-  artUrl?: string;
+  accent?: string;
+  disc?: string;
+  discTint?: string;
+};
+
+// Per-track palette. To add a new song, drop it in here — chip retints automatically.
+// (Kept here so the chip stays self-contained; lift to a prop/context later if needed.)
+const CURRENT: Track = {
+  track: "Slow Burn",
+  artist: "Kacey Musgraves",
+  accent: "#4A6741",      // moss
+  disc: "#B8C9A3",        // sage
+  discTint: "#E8E0D0",    // linen highlight
 };
 
 export const NowPlayingChip = ({
-  track = "Slow Burn",
-  artist = "Kacey Musgraves",
-  artUrl = "https://picsum.photos/seed/nowplaying/80/80",
+  track = CURRENT.track,
+  artist = CURRENT.artist,
+  accent = CURRENT.accent,
+  disc = CURRENT.disc,
+  discTint = CURRENT.discTint ?? "#faf6ec",
 }: Props) => {
+  // Helpers for color-with-alpha (hex assumed)
+  const withAlpha = (hex: string, a: number) => {
+    const h = hex.replace("#", "");
+    const r = parseInt(h.slice(0, 2), 16);
+    const g = parseInt(h.slice(2, 4), 16);
+    const b = parseInt(h.slice(4, 6), 16);
+    return `rgba(${r}, ${g}, ${b}, ${a})`;
+  };
+
   return (
     <motion.div
+      key={`${track}-${artist}`} // remount on song change → smooth retint
       initial={{ opacity: 0, y: -8 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay: 0.2 }}
-      className="inline-flex items-center gap-3 bg-[#faf6ec]/90 backdrop-blur-md border border-[#4a5a3a]/15 py-1.5 pl-1.5 pr-4 rounded-full shadow-[0_4px_14px_rgba(74,90,58,0.08)] hover:shadow-[0_6px_18px_rgba(74,90,58,0.14)] transition-shadow"
+      transition={{ duration: 0.5, delay: 0.2 }}
+      className="inline-flex items-center gap-3 bg-[#faf6ec]/90 backdrop-blur-md border py-1.5 pl-1.5 pr-4 rounded-full transition-shadow"
+      style={{
+        borderColor: withAlpha(accent, 0.2),
+        boxShadow: `0 4px 14px ${withAlpha(accent, 0.18)}`,
+      }}
     >
-      {/* Album art (rotating slowly) */}
-      <div className="relative size-9 rounded-full overflow-hidden bg-[#828c73]/20 shrink-0 border border-[#4a5a3a]/10">
-        <motion.img
-          src={artUrl}
-          alt=""
-          className="size-full object-cover"
+      {/* Spinning disc — solid track color with soft sheen */}
+      <div
+        className="relative size-9 rounded-full overflow-hidden shrink-0"
+        style={{
+          background: disc,
+          border: `1px solid ${withAlpha(accent, 0.35)}`,
+        }}
+      >
+        <motion.div
+          className="size-full"
+          style={{
+            background: `radial-gradient(circle at 35% 30%, ${withAlpha(
+              "#ffffff",
+              0.55
+            )} 0%, transparent 38%), radial-gradient(circle at 65% 70%, ${withAlpha(
+              discTint,
+              0.5
+            )} 0%, transparent 50%), ${disc}`,
+          }}
           animate={{ rotate: 360 }}
           transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
         />
         {/* center hole */}
-        <div className="absolute inset-0 m-auto size-1.5 rounded-full bg-[#faf6ec] border border-[#4a5a3a]/20" />
+        <div
+          className="absolute inset-0 m-auto size-1.5 rounded-full bg-[#faf6ec]"
+          style={{ border: `1px solid ${withAlpha(accent, 0.4)}` }}
+        />
       </div>
 
       <div className="flex flex-col leading-none">
-        <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-[#4a5a3a]/70 mb-1 flex items-center gap-1.5">
-          <span className="size-1.5 rounded-full bg-[#4a5a3a] animate-pulse" />
+        <span
+          className="font-mono text-[9px] uppercase tracking-[0.18em] mb-1 flex items-center gap-1.5"
+          style={{ color: withAlpha(accent, 0.85) }}
+        >
+          <motion.span
+            className="size-1.5 rounded-full"
+            style={{ background: accent }}
+            animate={{ opacity: [1, 0.4, 1] }}
+            transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+          />
           now spinning
         </span>
         <span className="text-[12px] font-medium text-[#2d2a1f] whitespace-nowrap">
-          {track} <span className="text-[#4a5a3a]/60">— {artist}</span>
+          {track}{" "}
+          <span style={{ color: withAlpha(accent, 0.7) }}>— {artist}</span>
         </span>
       </div>
 
@@ -46,7 +110,8 @@ export const NowPlayingChip = ({
         {[0.1, 0.3, 0.2].map((delay, i) => (
           <motion.span
             key={i}
-            className="w-0.5 bg-[#4a5a3a] rounded-full"
+            className="w-0.5 rounded-full"
+            style={{ background: accent }}
             animate={{ height: ["3px", "13px", "5px", "10px", "3px"] }}
             transition={{
               duration: 0.9 + i * 0.15,
