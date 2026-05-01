@@ -370,7 +370,7 @@ const TicketFace = ({
                 : { opacity: 0 }
             }
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="relative px-2 py-5 flex flex-col items-center justify-center gap-2 border-l-2 border-dashed border-[#7a5a2e]/50"
+            className="relative px-2 py-5 flex flex-col items-center justify-center gap-2 border-l-2 border-dashed border-[#7a5a2e]/50 transition-all duration-300 group-hover:border-[#7a5a2e] group-hover:border-l-[3px]"
             style={{
               background: PAPER_BG,
               minHeight: 230,
