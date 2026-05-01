@@ -149,6 +149,12 @@ const Ticket = ({
       ? { y: -10, rotateZ: film.rotate * 0.3, scale: 1.03 }
       : { y: 0, rotateZ: film.rotate, scale: 1 };
 
+  // ---- TEAR mode: subtle hover lift to signal interactivity
+  const tearHoverAnim =
+    mode === "tear" && hovered && !isOpen
+      ? { y: -6, rotateZ: film.rotate * 0.6, scale: 1.02 }
+      : { y: 0, rotateZ: film.rotate, scale: 1 };
+
   // ---- SHUFFLE: clicked one comes to top with a little hop
   const shuffleAnim =
     mode === "shuffle" && isOpen
@@ -168,6 +174,8 @@ const Ticket = ({
       ? shuffleAnim
       : mode === "flip"
       ? flipAnim
+      : mode === "tear"
+      ? tearHoverAnim
       : { rotateZ: film.rotate };
 
   return (
@@ -178,7 +186,7 @@ const Ticket = ({
       initial={{ opacity: 0, y: 20, rotateZ: film.rotate }}
       animate={{ opacity: 1, ...animate }}
       transition={{ type: "spring", stiffness: 200, damping: 22 }}
-      className="relative cursor-pointer select-none"
+      className="group relative cursor-pointer select-none"
       style={{
         width: 200,
         zIndex: isOpen ? 50 : zBoost,
@@ -362,7 +370,7 @@ const TicketFace = ({
                 : { opacity: 0 }
             }
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="relative px-2 py-5 flex flex-col items-center justify-center gap-2 border-l-2 border-dashed border-[#7a5a2e]/50"
+            className="relative px-2 py-5 flex flex-col items-center justify-center gap-2 border-l-2 border-dashed border-[#7a5a2e]/50 transition-all duration-300 group-hover:border-[#7a5a2e] group-hover:border-l-[3px]"
             style={{
               background: PAPER_BG,
               minHeight: 230,

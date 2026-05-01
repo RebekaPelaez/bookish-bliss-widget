@@ -79,7 +79,14 @@ const Index = () => {
           {/* FILMS + VINYL — side by side on desktop, stacked on mobile */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-start">
             <div className="lg:col-span-7">
-              <SectionLabel>films I rewatch</SectionLabel>
+              <div className="flex items-baseline justify-between mb-6">
+                <p className="text-[11px] uppercase tracking-[0.3em] text-muted-foreground font-mono">
+                  films I rewatch
+                </p>
+                <p className="text-[10px] uppercase tracking-[0.25em] text-[#2d2a1f]/40 font-mono italic">
+                  ✦ tear a stub →
+                </p>
+              </div>
               <FilmTickets interaction="tear" />
             </div>
             <div className="lg:col-span-5">
