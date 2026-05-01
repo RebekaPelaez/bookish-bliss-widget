@@ -10,6 +10,12 @@ import bodyKeepsScore from "@/assets/books/body-keeps-the-score.jpg";
 import nameOfTheWind from "@/assets/books/name-of-the-wind.jpg";
 import duelo from "@/assets/books/pequeno-libro-del-duelo.jpg";
 import acotar from "@/assets/books/acotar.jpg";
+import manWhoMistook from "@/assets/books/man-who-mistook.jpg";
+import mythOfNormal from "@/assets/books/myth-of-normal.jpg";
+import myFriends from "@/assets/books/my-friends.jpg";
+import alchemised from "@/assets/books/alchemised.jpg";
+import oneGoldenSummer from "@/assets/books/one-golden-summer.jpg";
+import slaughterhouseFive from "@/assets/books/slaughterhouse-five.jpg";
 
 type Book = {
   id: string;
