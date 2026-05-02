@@ -18,6 +18,9 @@ import oneGoldenSummer from "@/assets/books/one-golden-summer.jpg";
 import slaughterhouseFive from "@/assets/books/slaughterhouse-five.jpg";
 import islaMujeresDelMar from "@/assets/books/isla-mujeres-del-mar.jpg";
 import maybeYouShouldTalk from "@/assets/books/maybe-you-should-talk-to-someone.jpg";
+import lookingForAlaska from "@/assets/books/looking-for-alaska.jpg";
+import chroniclesOfNarnia from "@/assets/books/chronicles-of-narnia.jpg";
+import tinyBeautifulThings from "@/assets/books/tiny-beautiful-things.jpg";
 
 type Book = {
   id: string;
