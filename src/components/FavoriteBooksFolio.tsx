@@ -18,6 +18,9 @@ import oneGoldenSummer from "@/assets/books/one-golden-summer.jpg";
 import slaughterhouseFive from "@/assets/books/slaughterhouse-five.jpg";
 import islaMujeresDelMar from "@/assets/books/isla-mujeres-del-mar.jpg";
 import maybeYouShouldTalk from "@/assets/books/maybe-you-should-talk-to-someone.jpg";
+import lookingForAlaska from "@/assets/books/looking-for-alaska.jpg";
+import chroniclesOfNarnia from "@/assets/books/chronicles-of-narnia.jpg";
+import tinyBeautifulThings from "@/assets/books/tiny-beautiful-things.jpg";
 
 type Book = {
   id: string;
@@ -228,6 +231,44 @@ const BOOKS: Book[] = [
     quote: "The nature of life is change, but the nature of human beings is to resist change.",
     rating: 5,
     tag: "Memoir",
+  },
+  {
+    id: "looking-for-alaska",
+    title: "Looking for Alaska",
+    author: "John Green",
+    cover: lookingForAlaska,
+    hoverNote: "the first book that gutted me",
+    blurb:
+      "Boarding school, last words, and a girl who's all sharp edges and centrifugal force. A book about the labyrinth of suffering — and trying to find the way out.",
+    quote: "How will we ever get out of this labyrinth of suffering?",
+    rating: 5,
+    tag: "YA",
+  },
+  {
+    id: "chronicles-of-narnia",
+    title: "The Chronicles of Narnia",
+    author: "C. S. Lewis",
+    cover: chroniclesOfNarnia,
+    series: "The complete seven",
+    hoverNote: "the wardrobe that started everything",
+    blurb:
+      "Lions, witches, talking beasts and slow English afternoons. The first books that taught me a story could be a doorway — and that some doorways stay open for life.",
+    quote: "Courage, dear heart.",
+    rating: 5,
+    tag: "Classic",
+  },
+  {
+    id: "tiny-beautiful-things",
+    title: "Tiny Beautiful Things",
+    author: "Cheryl Strayed",
+    cover: tinyBeautifulThings,
+    series: "Advice on Love and Life from Dear Sugar",
+    hoverNote: "read it slowly, like medicine",
+    blurb:
+      "Strangers write in with their grief, their longing, their unspeakable questions. Strayed answers like a friend who's been there — fierce, tender, unflinching.",
+    quote: "You don't have a right to the cards you believe you should have been dealt. You have an obligation to play the hell out of the ones you're holding.",
+    rating: 5,
+    tag: "Essays",
   },
 ];
 
