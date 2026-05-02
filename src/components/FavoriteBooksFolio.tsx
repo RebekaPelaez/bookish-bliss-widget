@@ -334,7 +334,7 @@ const FavoriteBooksFolio = () => {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 6 }}
                           transition={{ duration: 0.2 }}
-                          className="absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap px-2.5 py-1 bg-[#2d2a1f] text-[#faf6ec] text-[10px] font-serif italic shadow-md pointer-events-none"
+                          className="absolute -top-2 left-1/2 -translate-x-1/2 -translate-y-full w-[160px] text-center px-2.5 py-1 bg-[#2d2a1f] text-[#faf6ec] text-[10px] font-serif italic leading-snug shadow-md pointer-events-none z-20"
                         >
                           “{book.hoverNote}”
                           <div className="absolute left-1/2 -bottom-1 -translate-x-1/2 w-2 h-2 bg-[#2d2a1f] rotate-45" />
