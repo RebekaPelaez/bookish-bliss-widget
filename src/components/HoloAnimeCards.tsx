@@ -135,7 +135,7 @@ const ANIME: Anime[] = [
     note: "A found-family masterpiece. The zodiac curse hits harder than any shounen power-up.",
     artFrom: "#2e1a3a",
     artTo: "#f5a9b8",
-    emoji: "🍑",
+    emoji: "🐈",
   },
   {
     id: "avatar-tla",
