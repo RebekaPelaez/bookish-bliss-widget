@@ -137,6 +137,8 @@ const ANIME: Anime[] = [
     artTo: "#f5a9b8",
     emoji: "🍑",
   },
+  {
+    id: "avatar-tla",
     title: "Avatar: The Last Airbender",
     subtitle: "Book 1–3",
     rank: "SSS",
