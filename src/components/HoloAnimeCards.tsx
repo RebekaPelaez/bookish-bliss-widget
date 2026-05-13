@@ -143,7 +143,6 @@ const ANIME: Anime[] = [
     subtitle: "Dandadan",
     rank: "S",
     status: "Watching",
-    energy: "ongoing",
     episodes: "S2 ongoing",
     note: "Aliens vs. yokai vs. teenage hormones — chaotic, kinetic, and weirdly tender.",
     artFrom: "#1a0b2e",
