@@ -145,9 +145,9 @@ const ANIME: Anime[] = [
     status: "Watching",
     episodes: "S2 ongoing",
     note: "Aliens vs. yokai vs. teenage hormones — chaotic, kinetic, and weirdly tender.",
-    artFrom: "#1a0b2e",
-    artTo: "#ff5ea8",
-    emoji: "👽",
+    artFrom: "#2e1a4e",
+    artTo: "#7c99d4",
+    emoji: "🛸",
   },
   {
     id: "avatar-tla",
