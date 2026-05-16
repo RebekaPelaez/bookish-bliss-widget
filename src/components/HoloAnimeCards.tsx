@@ -1,5 +1,6 @@
 import { useRef, useState, MouseEvent } from "react";
 import { motion } from "framer-motion";
+import demonSlayerImg from "@/assets/anime/demon-slayer.png";
 
 type Anime = {
   id: string;
