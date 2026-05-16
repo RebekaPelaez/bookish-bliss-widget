@@ -1,6 +1,5 @@
 import { useRef, useState, MouseEvent } from "react";
 import { motion } from "framer-motion";
-import demonSlayerImg from "@/assets/anime/demon-slayer.png";
 
 type Anime = {
   id: string;
@@ -14,7 +13,6 @@ type Anime = {
   artFrom: string;
   artTo: string;
   emoji: string;
-  image?: string;
   aside?: string;
 };
 
@@ -30,7 +28,6 @@ const ANIME: Anime[] = [
     artFrom: "#1a1330",
     artTo: "#7a1f3d",
     emoji: "🗡️",
-    image: demonSlayerImg,
   },
   {
     id: "apothecary",
@@ -323,13 +320,7 @@ const HoloCard = ({ anime }: { anime: Anime }) => {
           <div className="flex-1 flex items-center justify-center drop-shadow-2xl"
             style={{ filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.6))" }}
           >
-            {anime.image ? (
-              <img
-                src={anime.image}
-                alt={anime.title}
-                className="max-h-[70%] max-w-[90%] object-contain"
-              />
-            ) : anime.emoji.includes("|") ? (
+            {anime.emoji.includes("|") ? (
               <div className="grid grid-cols-2 gap-2 text-4xl">
                 {anime.emoji.split("|").map((c, i) => (
                   <span key={i} className="leading-none">{c}</span>
