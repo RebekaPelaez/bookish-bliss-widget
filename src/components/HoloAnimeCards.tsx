@@ -30,6 +30,7 @@ const ANIME: Anime[] = [
     artFrom: "#1a1330",
     artTo: "#7a1f3d",
     emoji: "🗡️",
+    image: demonSlayerImg,
   },
   {
     id: "apothecary",
