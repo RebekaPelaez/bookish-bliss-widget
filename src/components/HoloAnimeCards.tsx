@@ -14,6 +14,7 @@ type Anime = {
   artFrom: string;
   artTo: string;
   emoji: string;
+  image?: string;
   aside?: string;
 };
 
