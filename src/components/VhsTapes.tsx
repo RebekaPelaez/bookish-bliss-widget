@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Play, Pause, Rewind, Circle } from "lucide-react";
+
 
 type Tape = {
   id: string;
@@ -56,6 +58,8 @@ const TAPES: Tape[] = [
 const Tape = ({ tape }: { tape: Tape }) => {
   const [hovered, setHovered] = useState(false);
   const [flipped, setFlipped] = useState(false);
+  const [playing, setPlaying] = useState(false);
+
 
   return (
     <motion.div
@@ -229,20 +233,53 @@ const Tape = ({ tape }: { tape: Tape }) => {
         </div>
       </motion.div>
 
-      {/* Hover hint */}
+      {/* Hover transport controls */}
       <AnimatePresence>
         {hovered && (
           <motion.div
             initial={{ opacity: 0, y: -4 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -4 }}
-            className="absolute left-0 right-0 text-center text-[9px] font-mono uppercase tracking-[0.3em] text-zinc-400 whitespace-nowrap"
-            style={{ top: 180 }}
+            transition={{ duration: 0.18 }}
+            className="absolute left-0 right-0 flex items-center justify-center gap-3"
+            style={{ top: 176 }}
           >
-            ▶ {flipped ? "click · flip back" : "click · flip"}
+            <button
+              type="button"
+              onClick={(e) => { e.stopPropagation(); }}
+              className="flex items-center gap-1 px-2 py-1 rounded-sm font-mono text-[9px] uppercase tracking-[0.2em] text-zinc-300 bg-black/60 border border-white/10 hover:text-white hover:border-white/30 transition-colors"
+              aria-label="Rewind"
+            >
+              <Rewind size={10} className="fill-current" />
+              <span>Rew</span>
+            </button>
+            <button
+              type="button"
+              onClick={(e) => { e.stopPropagation(); setPlaying((p) => !p); }}
+              className="flex items-center gap-1 px-2 py-1 rounded-sm font-mono text-[9px] uppercase tracking-[0.2em] text-zinc-900 bg-white/90 hover:bg-white transition-colors"
+              aria-label={playing ? "Pause" : "Play"}
+            >
+              {playing ? (
+                <Pause size={10} className="fill-current" />
+              ) : (
+                <Play size={10} className="fill-current" />
+              )}
+              <span>{playing ? "Pause" : "Play"}</span>
+            </button>
+            <button
+              type="button"
+              onClick={(e) => { e.stopPropagation(); }}
+              className="flex items-center gap-1 px-2 py-1 rounded-sm font-mono text-[9px] uppercase tracking-[0.2em] bg-black/60 border border-white/10 hover:border-white/30 transition-colors"
+              style={{ color: tape.accent }}
+              aria-label="Record"
+            >
+              <Circle size={8} className="fill-current" />
+              <span>Rec</span>
+            </button>
           </motion.div>
         )}
       </AnimatePresence>
+
     </motion.div>
   );
 };
