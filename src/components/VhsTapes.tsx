@@ -60,133 +60,138 @@ const Tape = ({ tape }: { tape: Tape }) => {
     <motion.div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      initial={{ opacity: 0, y: 20, rotateZ: tape.rotate }}
-      animate={{
-        opacity: 1,
-        y: hovered ? -10 : 0,
-        rotateZ: hovered ? tape.rotate * 0.3 : tape.rotate,
-        scale: hovered ? 1.03 : 1,
-      }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ type: "spring", stiffness: 220, damping: 22 }}
       className="relative cursor-pointer select-none"
-      style={{ width: 260, perspective: 1000 }}
+      style={{ width: 260, height: 205, perspective: 1000 }}
     >
-      {/* Tape body */}
-      <div
-        className="relative rounded-[4px] overflow-hidden"
-        style={{
-          height: 165,
-          background: `linear-gradient(180deg, ${tape.spineColor} 0%, #1a1a1a 100%)`,
-          boxShadow:
-            `0 0 0 1px ${tape.accent}33, 0 18px 30px -12px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.15), inset 0 -2px 4px rgba(0,0,0,0.5)`,
+      {/* Rotated inner wrapper — lift + tilt only affects the tape body */}
+      <motion.div
+        animate={{
+          y: hovered ? -10 : 0,
+          rotateZ: hovered ? tape.rotate * 0.3 : tape.rotate,
+          scale: hovered ? 1.03 : 1,
         }}
+        transition={{ type: "spring", stiffness: 220, damping: 22 }}
       >
-        {/* Plastic sheen */}
+        {/* Tape body */}
         <div
-          className="absolute inset-0 pointer-events-none opacity-40"
+          className="relative rounded-[4px] overflow-hidden"
           style={{
-            background:
-              "linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.12) 45%, transparent 60%)",
-          }}
-        />
-
-        {/* Top header strip */}
-        <div
-          className="absolute top-0 left-0 right-0 px-3 py-1.5 flex items-center justify-between text-[8px] font-mono uppercase tracking-[0.2em]"
-          style={{ background: "rgba(0,0,0,0.4)", color: tape.accent }}
-        >
-          <span>VHS</span>
-          <span>T-120 · SP/LP/EP</span>
-        </div>
-
-        {/* Paper label */}
-        <div
-          className="absolute left-3 right-3 rounded-sm px-3 py-2"
-          style={{
-            top: 22,
-            bottom: 50,
-            background: `linear-gradient(180deg, ${tape.labelColor} 0%, ${tape.labelColor}dd 100%)`,
-            boxShadow: "inset 0 0 0 1px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.3)",
-            backgroundImage: `
-              repeating-linear-gradient(0deg, transparent 0px, transparent 2px, rgba(0,0,0,0.02) 2px, rgba(0,0,0,0.02) 3px),
-              linear-gradient(180deg, ${tape.labelColor} 0%, ${tape.labelColor}dd 100%)
-            `,
+            height: 165,
+            background: `linear-gradient(180deg, ${tape.spineColor} 0%, #1a1a1a 100%)`,
+            boxShadow:
+              `0 0 0 1px ${tape.accent}33, 0 18px 30px -12px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.15), inset 0 -2px 4px rgba(0,0,0,0.5)`,
           }}
         >
-          {/* accent bar */}
+          {/* Plastic sheen */}
           <div
-            className="h-1 w-12 mb-1.5 rounded-full"
-            style={{ background: tape.accent }}
+            className="absolute inset-0 pointer-events-none opacity-40"
+            style={{
+              background:
+                "linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.12) 45%, transparent 60%)",
+            }}
           />
-          <p className="font-mono text-[8px] uppercase tracking-[0.2em] text-[#3a2e1a]/60">
-            {tape.genre} · {tape.runtime}
-          </p>
-          <h3
-            className="font-serif text-[15px] leading-tight text-[#1a1408] mt-1"
-            style={{ fontFamily: "Georgia, serif" }}
+
+          {/* Top header strip */}
+          <div
+            className="absolute top-0 left-0 right-0 px-3 py-1.5 flex items-center justify-between text-[8px] font-mono uppercase tracking-[0.2em]"
+            style={{ background: "rgba(0,0,0,0.4)", color: tape.accent }}
           >
-            {tape.title}
-          </h3>
-          <p className="font-mono text-[9px] text-[#3a2e1a]/70 mt-1">
-            ({tape.year})
-          </p>
-          <p className="text-[10px] italic text-[#3a2e1a]/80 mt-1.5 leading-snug">
-            "{tape.note}"
-          </p>
-        </div>
+            <span>VHS</span>
+            <span>T-120 · SP/LP/EP</span>
+          </div>
 
-        {/* Window with reels */}
-        <div
-          className="absolute left-1/2 -translate-x-1/2 rounded-[2px] flex items-center justify-around px-3"
-          style={{
-            bottom: 8,
-            width: "78%",
-            height: 36,
-            background: "linear-gradient(180deg, #2a2a2a 0%, #1f1f1f 100%)",
-            boxShadow: "inset 0 2px 4px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.08)",
-          }}
-        >
-          {[0, 1].map((i) => (
-            <motion.div
-              key={i}
-              animate={hovered ? { rotate: 360 } : { rotate: 0 }}
-              transition={{
-                duration: 3,
-                repeat: hovered ? Infinity : 0,
-                ease: "linear",
-              }}
-              className="relative rounded-full"
-              style={{
-                width: 22,
-                height: 22,
-                background: "radial-gradient(circle, #5a5a5a 0%, #2a2a2a 70%)",
-                boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.15)",
-              }}
+          {/* Paper label */}
+          <div
+            className="absolute left-3 right-3 rounded-sm px-3 py-2"
+            style={{
+              top: 22,
+              bottom: 50,
+              background: `linear-gradient(180deg, ${tape.labelColor} 0%, ${tape.labelColor}dd 100%)`,
+              boxShadow: "inset 0 0 0 1px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.3)",
+              backgroundImage: `
+                repeating-linear-gradient(0deg, transparent 0px, transparent 2px, rgba(0,0,0,0.02) 2px, rgba(0,0,0,0.02) 3px),
+                linear-gradient(180deg, ${tape.labelColor} 0%, ${tape.labelColor}dd 100%)
+              `,
+            }}
+          >
+            {/* accent bar */}
+            <div
+              className="h-1 w-12 mb-1.5 rounded-full"
+              style={{ background: tape.accent }}
+            />
+            <p className="font-mono text-[8px] uppercase tracking-[0.2em] text-[#3a2e1a]/60">
+              {tape.genre} · {tape.runtime}
+            </p>
+            <h3
+              className="font-serif text-[15px] leading-tight text-[#1a1408] mt-1"
+              style={{ fontFamily: "Georgia, serif" }}
             >
-              {[0, 60, 120].map((deg) => (
-                <div
-                  key={deg}
-                  className="absolute top-1/2 left-1/2 w-[14px] h-[1.5px] -translate-y-1/2 -translate-x-1/2 bg-[#0a0a0a]"
-                  style={{ transform: `translate(-50%, -50%) rotate(${deg}deg)` }}
-                />
-              ))}
-              <div
-                className="absolute top-1/2 left-1/2 w-1.5 h-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full"
-                style={{ background: tape.accent }}
-              />
-            </motion.div>
-          ))}
-        </div>
-      </div>
+              {tape.title}
+            </h3>
+            <p className="font-mono text-[9px] text-[#3a2e1a]/70 mt-1">
+              ({tape.year})
+            </p>
+            <p className="text-[10px] italic text-[#3a2e1a]/80 mt-1.5 leading-snug">
+              "{tape.note}"
+            </p>
+          </div>
 
-      {/* Hover note */}
+          {/* Window with reels */}
+          <div
+            className="absolute left-1/2 -translate-x-1/2 rounded-[2px] flex items-center justify-around px-3"
+            style={{
+              bottom: 8,
+              width: "78%",
+              height: 36,
+              background: "linear-gradient(180deg, #2a2a2a 0%, #1f1f1f 100%)",
+              boxShadow: "inset 0 2px 4px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.08)",
+            }}
+          >
+            {[0, 1].map((i) => (
+              <motion.div
+                key={i}
+                animate={hovered ? { rotate: 360 } : { rotate: 0 }}
+                transition={{
+                  duration: 3,
+                  repeat: hovered ? Infinity : 0,
+                  ease: "linear",
+                }}
+                className="relative rounded-full"
+                style={{
+                  width: 22,
+                  height: 22,
+                  background: "radial-gradient(circle, #5a5a5a 0%, #2a2a2a 70%)",
+                  boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.15)",
+                }}
+              >
+                {[0, 60, 120].map((deg) => (
+                  <div
+                    key={deg}
+                    className="absolute top-1/2 left-1/2 w-[14px] h-[1.5px] -translate-y-1/2 -translate-x-1/2 bg-[#0a0a0a]"
+                    style={{ transform: `translate(-50%, -50%) rotate(${deg}deg)` }}
+                  />
+                ))}
+                <div
+                  className="absolute top-1/2 left-1/2 w-1.5 h-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full"
+                  style={{ background: tape.accent }}
+                />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Hover note — sits outside the rotated wrapper so it stays level */}
       <AnimatePresence>
         {hovered && (
           <motion.div
             initial={{ opacity: 0, y: -4 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -4 }}
-            className="absolute -bottom-7 left-1/2 -translate-x-1/2 text-[9px] font-mono uppercase tracking-[0.3em] text-zinc-500 whitespace-nowrap"
+            className="absolute bottom-0 left-1/2 -translate-x-1/2 text-[9px] font-mono uppercase tracking-[0.3em] text-zinc-400 whitespace-nowrap"
           >
             ▶ play · rec · rew
           </motion.div>
