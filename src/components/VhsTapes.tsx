@@ -76,9 +76,9 @@ const Tape = ({ tape }: { tape: Tape }) => {
         className="relative rounded-[4px] overflow-hidden"
         style={{
           height: 165,
-          background: `linear-gradient(180deg, ${tape.spineColor} 0%, #000 100%)`,
+          background: `linear-gradient(180deg, ${tape.spineColor} 0%, #1a1a1a 100%)`,
           boxShadow:
-            "0 18px 30px -12px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.08), inset 0 -2px 4px rgba(0,0,0,0.5)",
+            `0 0 0 1px ${tape.accent}33, 0 18px 30px -12px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.15), inset 0 -2px 4px rgba(0,0,0,0.5)`,
         }}
       >
         {/* Plastic sheen */}
