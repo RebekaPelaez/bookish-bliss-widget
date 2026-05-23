@@ -139,12 +139,7 @@ const Tape = ({ tape }: { tape: Tape }) => {
               ({tape.year})
             </p>
             <p
-              className="text-[10px] italic text-[#3a2e1a]/80 mt-1.5 leading-snug overflow-hidden"
-              style={{
-                display: "-webkit-box",
-                WebkitLineClamp: 2,
-                WebkitBoxOrient: "vertical",
-              }}
+              className="text-[10px] italic text-[#3a2e1a]/80 mt-1.5 truncate"
             >
               "{tape.note}"
             </p>
