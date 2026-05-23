@@ -159,8 +159,8 @@ const Tape = ({ tape }: { tape: Tape }) => {
               style={{
                 width: 22,
                 height: 22,
-                background: "radial-gradient(circle, #3a3a3a 0%, #1a1a1a 70%)",
-                boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.1)",
+                background: "radial-gradient(circle, #5a5a5a 0%, #2a2a2a 70%)",
+                boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.15)",
               }}
             >
               {[0, 60, 120].map((deg) => (
