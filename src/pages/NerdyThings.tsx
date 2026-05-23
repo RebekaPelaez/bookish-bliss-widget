@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import HoloAnimeCards from "@/components/HoloAnimeCards";
+import VhsTapes from "@/components/VhsTapes";
 
 const NerdyThings = () => {
   return (
