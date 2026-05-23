@@ -142,8 +142,8 @@ const Tape = ({ tape }: { tape: Tape }) => {
             bottom: 8,
             width: "78%",
             height: 36,
-            background: "linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%)",
-            boxShadow: "inset 0 2px 4px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.05)",
+            background: "linear-gradient(180deg, #2a2a2a 0%, #1f1f1f 100%)",
+            boxShadow: "inset 0 2px 4px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.08)",
           }}
         >
           {[0, 1].map((i) => (
