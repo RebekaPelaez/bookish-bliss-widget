@@ -18,18 +18,6 @@ type Anime = {
 
 const ANIME: Anime[] = [
   {
-    id: "a-sign-of-affection",
-    title: "A Sign of Affection",
-    subtitle: "Yubisaki to Renren",
-    rank: "S",
-    status: "Finished",
-    episodes: "12 eps",
-    note: "A deaf protagonist and a hearing love interest — every frame is a lesson in how we connect beyond words.",
-    artFrom: "#2a1a3a",
-    artTo: "#e89bb5",
-    emoji: "🫶",
-  },
-  {
     id: "demon-slayer",
     title: "Demon Slayer",
     subtitle: "Kimetsu no Yaiba",
@@ -173,6 +161,18 @@ const ANIME: Anime[] = [
     artTo: "#e8b76b",
     emoji: "🔥|💧|🌿|🌬️",
     aside: "not anime, but…",
+  },
+  {
+    id: "a-sign-of-affection",
+    title: "A Sign of Affection",
+    subtitle: "Yubisaki to Renren",
+    rank: "S",
+    status: "Finished",
+    episodes: "12 eps",
+    note: "A deaf protagonist and a hearing love interest — every frame is a lesson in how we connect beyond words.",
+    artFrom: "#2a1a3a",
+    artTo: "#e89bb5",
+    emoji: "💖",
   },
 ];
 
