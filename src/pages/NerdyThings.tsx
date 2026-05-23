@@ -52,19 +52,23 @@ const NerdyThings = () => {
           <HoloAnimeCards />
         </section>
 
-        {/* Films placeholder for future expansion */}
+        {/* Films — VHS tapes */}
         <section className="mb-12 border-t border-zinc-800 pt-12">
-          <h2 className="text-2xl font-bold tracking-tight mb-3">
-            More films · coming soon
-          </h2>
-          <p className="text-sm text-zinc-400 max-w-xl">
-            The cinema tickets live on{" "}
+          <div className="flex items-baseline justify-between mb-2">
+            <h2 className="text-2xl font-bold tracking-tight">Films</h2>
+            <p className="text-[11px] uppercase tracking-[0.3em] text-zinc-500 font-mono">
+              hover to spin →
+            </p>
+          </div>
+          <p className="text-sm text-zinc-400 max-w-xl mb-6">
+            The deeper cuts — ones that don't fit on a single ticket stub over
+            on{" "}
             <Link to="/" className="text-cyan-300 hover:underline">
               About
             </Link>
-            . This is where the deeper cuts will land — the ones that don't fit
-            on a single ticket stub.
+            .
           </p>
+          <VhsTapes />
         </section>
       </div>
     </main>
