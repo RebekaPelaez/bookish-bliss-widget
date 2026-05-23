@@ -55,31 +55,36 @@ const TAPES: Tape[] = [
 
 const Tape = ({ tape }: { tape: Tape }) => {
   const [hovered, setHovered] = useState(false);
+  const [flipped, setFlipped] = useState(false);
 
   return (
     <motion.div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      onClick={() => setFlipped((f) => !f)}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ type: "spring", stiffness: 220, damping: 22 }}
       className="relative cursor-pointer select-none"
       style={{ width: 260, height: 205, perspective: 1000 }}
     >
-      {/* Rotated inner wrapper — lift + tilt only affects the tape body */}
+      {/* Rotated inner wrapper — lift + tilt + flip */}
       <motion.div
         animate={{
           y: hovered ? -10 : 0,
-          rotateZ: hovered ? tape.rotate * 0.3 : tape.rotate,
+          rotateZ: hovered || flipped ? tape.rotate * 0.3 : tape.rotate,
+          rotateY: flipped ? 180 : 0,
           scale: hovered ? 1.03 : 1,
         }}
         transition={{ type: "spring", stiffness: 220, damping: 22 }}
+        style={{ transformStyle: "preserve-3d", width: 260, height: 165 }}
       >
-        {/* Tape body */}
+        {/* FRONT */}
         <div
-          className="relative rounded-[4px] overflow-hidden"
+          className="absolute inset-0 rounded-[4px] overflow-hidden"
           style={{
-            height: 165,
+            backfaceVisibility: "hidden",
+            WebkitBackfaceVisibility: "hidden",
             background: `linear-gradient(180deg, ${tape.spineColor} 0%, #1a1a1a 100%)`,
             boxShadow:
               `0 0 0 1px ${tape.accent}33, 0 18px 30px -12px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.15), inset 0 -2px 4px rgba(0,0,0,0.5)`,
@@ -105,7 +110,7 @@ const Tape = ({ tape }: { tape: Tape }) => {
 
           {/* Paper label */}
           <div
-            className="absolute left-3 right-3 rounded-sm px-3 py-2"
+            className="absolute left-3 right-3 rounded-sm px-3 py-2 overflow-hidden"
             style={{
               top: 22,
               bottom: 50,
@@ -117,7 +122,6 @@ const Tape = ({ tape }: { tape: Tape }) => {
               `,
             }}
           >
-            {/* accent bar */}
             <div
               className="h-1 w-12 mb-1.5 rounded-full"
               style={{ background: tape.accent }}
@@ -134,7 +138,14 @@ const Tape = ({ tape }: { tape: Tape }) => {
             <p className="font-mono text-[9px] text-[#3a2e1a]/70 mt-1">
               ({tape.year})
             </p>
-            <p className="text-[10px] italic text-[#3a2e1a]/80 mt-1.5 leading-snug">
+            <p
+              className="text-[10px] italic text-[#3a2e1a]/80 mt-1.5 leading-snug overflow-hidden"
+              style={{
+                display: "-webkit-box",
+                WebkitLineClamp: 2,
+                WebkitBoxOrient: "vertical",
+              }}
+            >
               "{tape.note}"
             </p>
           </div>
@@ -182,9 +193,48 @@ const Tape = ({ tape }: { tape: Tape }) => {
             ))}
           </div>
         </div>
+
+        {/* BACK — full notes */}
+        <div
+          className="absolute inset-0 rounded-[4px] overflow-hidden p-4"
+          style={{
+            backfaceVisibility: "hidden",
+            WebkitBackfaceVisibility: "hidden",
+            transform: "rotateY(180deg)",
+            background: `linear-gradient(180deg, ${tape.spineColor} 0%, #141414 100%)`,
+            boxShadow:
+              `0 0 0 1px ${tape.accent}33, 0 18px 30px -12px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.15), inset 0 -2px 4px rgba(0,0,0,0.5)`,
+          }}
+        >
+          <div
+            className="absolute top-0 left-0 right-0 px-3 py-1.5 flex items-center justify-between text-[8px] font-mono uppercase tracking-[0.2em]"
+            style={{ background: "rgba(0,0,0,0.4)", color: tape.accent }}
+          >
+            <span>SIDE B</span>
+            <span>NOTES</span>
+          </div>
+          <div
+            className="absolute left-3 right-3 top-8 bottom-3 rounded-sm px-3 py-2 overflow-y-auto"
+            style={{
+              background: `linear-gradient(180deg, ${tape.labelColor} 0%, ${tape.labelColor}dd 100%)`,
+              boxShadow: "inset 0 0 0 1px rgba(0,0,0,0.1)",
+              backgroundImage: `
+                repeating-linear-gradient(0deg, transparent 0px, transparent 2px, rgba(0,0,0,0.02) 2px, rgba(0,0,0,0.02) 3px),
+                linear-gradient(180deg, ${tape.labelColor} 0%, ${tape.labelColor}dd 100%)
+              `,
+            }}
+          >
+            <p className="font-mono text-[8px] uppercase tracking-[0.2em] text-[#3a2e1a]/60">
+              {tape.title} · {tape.year}
+            </p>
+            <p className="text-[11px] italic text-[#1a1408] mt-2 leading-relaxed">
+              "{tape.note}"
+            </p>
+          </div>
+        </div>
       </motion.div>
 
-      {/* Hover note — sits outside the rotated wrapper so it stays level */}
+      {/* Hover hint */}
       <AnimatePresence>
         {hovered && (
           <motion.div
@@ -194,7 +244,7 @@ const Tape = ({ tape }: { tape: Tape }) => {
             className="absolute left-0 right-0 text-center text-[9px] font-mono uppercase tracking-[0.3em] text-zinc-400 whitespace-nowrap"
             style={{ top: 180 }}
           >
-            ▶ play · rec · rew
+            ▶ {flipped ? "click · flip back" : "click · flip"}
           </motion.div>
         )}
       </AnimatePresence>
