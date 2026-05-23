@@ -22,9 +22,9 @@ const TAPES: Tape[] = [
     genre: "Horror / Mystery",
     runtime: "128 min",
     note: "Slow-burn dread. Watched it twice in a week.",
-    spineColor: "#3a0a0a",
+    spineColor: "#8B1E1E",
     labelColor: "#f4e8d0",
-    accent: "#c2261f",
+    accent: "#ff4d4d",
     rotate: -3,
   },
   {
@@ -34,9 +34,9 @@ const TAPES: Tape[] = [
     genre: "Thriller",
     runtime: "112 min",
     note: "Gorgeous, uncomfortable, very rewatchable.",
-    spineColor: "#1a1638",
+    spineColor: "#4A3A6B",
     labelColor: "#ebe4d0",
-    accent: "#d4af37",
+    accent: "#ffd166",
     rotate: 2,
   },
   {
@@ -46,9 +46,9 @@ const TAPES: Tape[] = [
     genre: "Animation / Adventure",
     runtime: "98 min",
     note: "Test Drive score = instant tears. Every time.",
-    spineColor: "#0e2a3a",
+    spineColor: "#1E5A7A",
     labelColor: "#f0e6cc",
-    accent: "#5fb4d4",
+    accent: "#48cae4",
     rotate: -2,
   },
 ];
@@ -76,9 +76,9 @@ const Tape = ({ tape }: { tape: Tape }) => {
         className="relative rounded-[4px] overflow-hidden"
         style={{
           height: 165,
-          background: `linear-gradient(180deg, ${tape.spineColor} 0%, #000 100%)`,
+          background: `linear-gradient(180deg, ${tape.spineColor} 0%, #1a1a1a 100%)`,
           boxShadow:
-            "0 18px 30px -12px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.08), inset 0 -2px 4px rgba(0,0,0,0.5)",
+            `0 0 0 1px ${tape.accent}33, 0 18px 30px -12px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.15), inset 0 -2px 4px rgba(0,0,0,0.5)`,
         }}
       >
         {/* Plastic sheen */}
@@ -142,8 +142,8 @@ const Tape = ({ tape }: { tape: Tape }) => {
             bottom: 8,
             width: "78%",
             height: 36,
-            background: "linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%)",
-            boxShadow: "inset 0 2px 4px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.05)",
+            background: "linear-gradient(180deg, #2a2a2a 0%, #1f1f1f 100%)",
+            boxShadow: "inset 0 2px 4px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.08)",
           }}
         >
           {[0, 1].map((i) => (
@@ -159,8 +159,8 @@ const Tape = ({ tape }: { tape: Tape }) => {
               style={{
                 width: 22,
                 height: 22,
-                background: "radial-gradient(circle, #3a3a3a 0%, #1a1a1a 70%)",
-                boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.1)",
+                background: "radial-gradient(circle, #5a5a5a 0%, #2a2a2a 70%)",
+                boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.15)",
               }}
             >
               {[0, 60, 120].map((deg) => (
