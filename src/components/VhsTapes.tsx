@@ -191,7 +191,8 @@ const Tape = ({ tape }: { tape: Tape }) => {
             initial={{ opacity: 0, y: -4 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -4 }}
-            className="absolute bottom-0 left-1/2 -translate-x-1/2 text-[9px] font-mono uppercase tracking-[0.3em] text-zinc-400 whitespace-nowrap"
+            className="absolute left-0 right-0 text-center text-[9px] font-mono uppercase tracking-[0.3em] text-zinc-400 whitespace-nowrap"
+            style={{ top: 180 }}
           >
             ▶ play · rec · rew
           </motion.div>
